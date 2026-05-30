@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FarmaPerto — Farmácias de serviço, perto de si</title>
+  <meta name="description" content="FarmaPerto — encontre as farmácias de serviço e abertas mais perto de si, em Portugal. / Find on-duty and open pharmacies near you in Portugal. Coming soon.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%2313936a'/><rect x='13' y='6' width='6' height='20' rx='2' fill='white'/><rect x='6' y='13' width='20' height='6' rx='2' fill='white'/></svg>">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="hero">
+    <div class="hero-card">
+      <div class="brand"><span class="mark" aria-hidden="true"></span><span>FarmaPerto</span></div>
+
+      <div class="langs" role="group" aria-label="Language / Idioma">
+        <button type="button" data-set="pt">PT</button>
+        <button type="button" data-set="en">EN</button>
+      </div>
+
+      <!-- Portuguese -->
+      <div data-lang="pt" class="show">
+        <div class="pill">Em breve</div>
+        <h1 class="tagline">Farmácias de serviço, perto de si.</h1>
+        <p class="lede">Encontre rapidamente as farmácias de serviço e abertas mais perto de si — em qualquer ponto de Portugal. Grátis e sem registo.</p>
+        <p class="stores">Brevemente na App Store e no Google Play.</p>
+      </div>
+
+      <!-- English -->
+      <div data-lang="en">
+        <div class="pill">Coming soon</div>
+        <h1 class="tagline">On-duty pharmacies, near you.</h1>
+        <p class="lede">Quickly find the on-duty and open pharmacies nearest you — anywhere in Portugal. Free, no sign-up.</p>
+        <p class="stores">Coming soon to the App Store and Google Play.</p>
+      </div>
+
+      <div class="foot">
+        <p data-lang="pt" class="show">
+          <a href="pt/privacy/">Política de privacidade</a> &middot; <a href="mailto:renato.m.alm@gmail.com">Contacto</a><br>
+          App independente, sem ligação a entidades oficiais. &copy; 2026 NatoBytes.
+        </p>
+        <p data-lang="en">
+          <a href="en/privacy/">Privacy policy</a> &middot; <a href="mailto:renato.m.alm@gmail.com">Contact</a><br>
+          Independent app, not affiliated with any official entity. &copy; 2026 NatoBytes.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      function set(lang) {
+        document.documentElement.lang = lang;
+        document.querySelectorAll('[data-lang]').forEach(function (el) {
+          el.classList.toggle('show', el.getAttribute('data-lang') === lang);
+        });
+        document.querySelectorAll('.langs button').forEach(function (b) {
+          b.classList.toggle('active', b.getAttribute('data-set') === lang);
+        });
+        try { localStorage.setItem('fp_lang', lang); } catch (e) {}
+      }
+      var saved = null;
+      try { saved = localStorage.getItem('fp_lang'); } catch (e) {}
+      var initial = saved || ((navigator.language || 'pt').toLowerCase().indexOf('pt') === 0 ? 'pt' : 'en');
+      document.querySelectorAll('.langs button').forEach(function (b) {
+        b.addEventListener('click', function () { set(b.getAttribute('data-set')); });
+      });
+      set(initial);
+    })();
+  </script>
+</body>
+</html>
