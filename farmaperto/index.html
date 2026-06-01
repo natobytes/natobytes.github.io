@@ -1,75 +1,582 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-PT" data-dir="calm" data-shadow="soft">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#13936a">
-  <title>FarmaPerto — Farmácias de serviço, perto de si</title>
-  <meta name="description" content="FarmaPerto — encontre as farmácias de serviço e abertas mais perto de si, em Portugal. / Find on-duty and open pharmacies near you in Portugal. Coming soon.">
-  <link rel="icon" href="assets/favicon.ico" sizes="any">
-  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FarmaPerto — Farmácia de serviço, aberta agora, perto de ti</title>
+<meta name="description" data-pt="Encontra as farmácias de serviço e abertas mais perto de ti, em qualquer ponto de Portugal. Grátis, sem registo." data-en="Find the on-duty and open pharmacies nearest you, anywhere in Portugal. Free, no sign-up." content="Encontra as farmácias de serviço e abertas mais perto de ti, em qualquer ponto de Portugal. Grátis, sem registo." />
+<meta name="theme-color" content="#059669" />
+<link rel="canonical" href="https://natobytes.com/farmaperto/" />
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="FarmaPerto" />
+<meta property="og:url" content="https://natobytes.com/farmaperto/" />
+<meta property="og:title" content="FarmaPerto — Aberta agora, perto de ti" />
+<meta property="og:description" content="Encontra as farmácias de serviço e abertas mais perto de ti, em qualquer ponto de Portugal. Grátis e sem registo." />
+<meta property="og:image" content="https://natobytes.com/farmaperto/screenshots/feature-graphic.png" />
+<meta property="og:image:width" content="1024" />
+<meta property="og:image:height" content="500" />
+<meta property="og:locale" content="pt_PT" />
+<meta property="og:locale:alternate" content="en" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="FarmaPerto — Aberta agora, perto de ti" />
+<meta name="twitter:description" content="Encontra as farmácias de serviço e abertas mais perto de ti, em qualquer ponto de Portugal. Grátis e sem registo." />
+<meta name="twitter:image" content="https://natobytes.com/farmaperto/screenshots/feature-graphic.png" />
+<!-- Icons (real app icon) + PWA manifest -->
+<link rel="icon" href="assets/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" href="assets/icon-192.png" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+<link rel="manifest" href="manifest.json" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          brand: 'var(--brand)',
+          primary: 'var(--primary)',
+          'primary-light': 'var(--primary-light)',
+          'primary-container': 'var(--primary-container)',
+          secondary: 'var(--secondary)',
+          'status-open': 'var(--status-open)',
+          'status-warning': 'var(--status-warning)',
+          'status-closed': 'var(--status-closed)',
+          bg: 'var(--bg)',
+          surface: 'var(--surface)',
+          outline: 'var(--outline)',
+          ink: 'var(--ink)',
+        },
+        fontFamily: {
+          head: ['var(--font-head)', 'ui-sans-serif', 'sans-serif'],
+          sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --brand:#386A1F;
+    --primary:#059669;
+    --primary-light:#34D399;
+    --primary-container:#D1FAE5;
+    --secondary:#10B981;
+    --status-open:#047857;
+    --status-warning:#B45309;
+    --status-closed:#DC2626;
+    --bg:#F7F9FB;
+    --surface:#FFFFFF;
+    --outline:#D1D5DB;
+    --ink:#0F1A16;
+
+    --font-head:'Manrope';
+    --radius:16px;
+    --radius-lg:calc(var(--radius) + 8px);
+    --grad:59;                 /* hero gradient intensity 0–100 */
+    --shadow:0 1px 2px rgba(15,26,22,.04), 0 10px 28px -14px rgba(15,26,22,.16);
+    --maxw:1180px;
+  }
+  [data-shadow="flat"]{ --shadow:0 0 0 1px var(--outline); }
+  [data-shadow="soft"]{ --shadow:0 1px 2px rgba(15,26,22,.04), 0 10px 28px -14px rgba(15,26,22,.16); }
+  [data-shadow="lush"]{ --shadow:0 2px 6px rgba(15,26,22,.06), 0 24px 48px -18px rgba(15,26,22,.28); }
+
+  *{ -webkit-tap-highlight-color: transparent; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:'Inter', ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.font-head{ font-family:var(--font-head), 'Plus Jakarta Sans', sans-serif; }
+
+  .wrap{ max-width:var(--maxw); margin-inline:auto; padding-inline:22px; }
+  :focus-visible{ outline:3px solid color-mix(in oklab, var(--primary) 60%, white); outline-offset:2px; border-radius:6px; }
+
+  /* ── Card ───────────────────────────────── */
+  .card{
+    background:var(--surface);
+    border:1px solid color-mix(in oklab, var(--outline) 70%, transparent);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+  }
+
+  /* ── Status pills (recurring motif) ─────── */
+  .pill{
+    display:inline-flex; align-items:center; gap:7px;
+    font-weight:600; font-size:13px; line-height:1;
+    padding:7px 12px 7px 11px; border-radius:999px; white-space:nowrap;
+  }
+  .pill .dot{ width:8px; height:8px; border-radius:999px; background:currentColor; flex:none; }
+  .pill-open{ color:var(--status-open); background:color-mix(in oklab, var(--status-open) 12%, white); }
+  .pill-duty{ color:var(--status-warning); background:color-mix(in oklab, var(--status-warning) 13%, white); }
+  .pill-closed{ color:var(--status-closed); background:color-mix(in oklab, var(--status-closed) 11%, white); }
+  [data-dir="bold"] .pill{ border:1.5px solid currentColor; background:transparent !important; }
+
+  /* ── Hero gradient ─────────────────────── */
+  .hero-grad{
+    position:relative;
+    background:
+      radial-gradient(120% 120% at 85% -10%, color-mix(in oklab, var(--primary-light) calc(var(--grad)*0.22%), transparent) 0%, transparent 42%),
+      linear-gradient(160deg, #07120E 0%, #065F46 calc(40% + var(--grad)*0.15%), var(--brand) 100%);
+  }
+  .hero-grad::after{
+    content:""; position:absolute; inset:0; pointer-events:none;
+    background:#02100A; opacity:calc(var(--grad)/260);
+  }
+  .hero-grad>*{ position:relative; z-index:1; }
+
+  /* ── Buttons ───────────────────────────── */
+  .btn{ display:inline-flex; align-items:center; justify-content:center; gap:9px;
+    font-weight:600; border-radius:999px; min-height:48px; padding:0 22px; transition:transform .12s ease, background .15s ease, box-shadow .15s ease; }
+  .btn:active{ transform:translateY(1px); }
+  .btn-primary{ background:var(--primary); color:#fff; box-shadow:0 8px 20px -8px color-mix(in oklab, var(--primary) 70%, transparent); }
+  .btn-primary:hover{ background:color-mix(in oklab, var(--primary) 90%, black); }
+  .btn-ghost{ background:rgba(255,255,255,.10); color:#fff; border:1px solid rgba(255,255,255,.22); }
+  .btn-ghost:hover{ background:rgba(255,255,255,.18); }
+
+  /* ── Store badges ──────────────────────── */
+  .store{ display:inline-flex; align-items:center; gap:11px; min-height:54px; padding:0 18px 0 16px;
+    border-radius:13px; background:#0B0F0D; color:#fff; border:1px solid rgba(255,255,255,.14);
+    transition:transform .12s ease, box-shadow .15s ease; }
+  .store:hover{ transform:translateY(-2px); box-shadow:0 14px 30px -16px rgba(0,0,0,.6); }
+  .store svg{ flex:none; }
+  .store .s-top{ font-size:10.5px; letter-spacing:.04em; opacity:.82; line-height:1.1; white-space:nowrap; }
+  .store .s-main{ font-size:18px; font-weight:600; line-height:1.15; margin-top:1px; font-family:var(--font-head),sans-serif; white-space:nowrap; }
+  .store-row{ display:flex; flex-wrap:wrap; gap:13px; }
+  [data-dir="bold"] .store{ border-radius:10px; }
+
+  /* ── Feature icon tile ─────────────────── */
+  .ficon{ width:46px; height:46px; border-radius:13px; display:grid; place-items:center; flex:none;
+    background:var(--primary-container); color:var(--status-open); }
+  .ficon svg{ width:23px; height:23px; stroke-width:2; }
+  [data-dir="bold"] .ficon{ background:var(--brand); color:#fff; border-radius:11px; }
+
+  /* ── CSS phone frame ───────────────────── */
+  .phone{ position:relative; width:100%; aspect-ratio:9/19.2; background:#0c0f0e;
+    border-radius:42px; padding:9px; box-shadow:
+      0 0 0 2px #1d2421, 0 2px 2px rgba(255,255,255,.18) inset,
+      0 40px 80px -30px rgba(7,18,14,.55), 0 12px 28px -16px rgba(7,18,14,.4);
+  }
+  .phone .screen{ position:relative; width:100%; height:100%; border-radius:34px; overflow:hidden;
+    background:#0f1512; }
+  .phone .notch{ position:absolute; top:9px; left:50%; transform:translateX(-50%); z-index:6;
+    width:34%; height:22px; background:#0c0f0e; border-radius:0 0 14px 14px; }
+  .phone .notch::after{ content:""; position:absolute; right:18%; top:50%; transform:translateY(-50%);
+    width:7px; height:7px; border-radius:999px; background:#222b27; box-shadow:0 0 0 1.5px #303a35; }
+  .phone .glare{ position:absolute; inset:0; z-index:5; pointer-events:none; border-radius:34px;
+    background:linear-gradient(135deg, rgba(255,255,255,.16) 0%, rgba(255,255,255,0) 26%, rgba(255,255,255,0) 100%); }
+  .ph-img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .3s ease; z-index:2; }
+  .ph-img.loaded{ opacity:1; }
+  /* striped placeholder shown until a real screenshot loads */
+  .ph-ph{ position:absolute; inset:0; z-index:1; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; gap:10px; text-align:center; padding:18px;
+    background:
+      repeating-linear-gradient(135deg, #f1f4f2 0 11px, #e7ece9 11px 22px);
+    color:#5d6b64; }
+  .ph-ph .ph-tag{ font-family:ui-monospace,'SF Mono',Menlo,monospace; font-size:12px;
+    background:rgba(255,255,255,.9); padding:5px 9px; border-radius:7px; box-shadow:0 1px 2px rgba(0,0,0,.06); }
+  .ph-ph .ph-cross{ width:34px; height:34px; opacity:.5; }
+
+  /* hero floating pulse chip */
+  .pulse-chip{ position:absolute; z-index:7; left:-14px; top:16%;
+    background:var(--surface); border-radius:14px; padding:9px 13px;
+    box-shadow:0 14px 30px -12px rgba(7,18,14,.4), 0 0 0 1px rgba(15,26,22,.05);
+    display:flex; align-items:center; gap:9px; }
+  .pulse-chip .ring{ position:relative; width:11px; height:11px; }
+  .pulse-chip .ring i{ position:absolute; inset:0; border-radius:999px; background:var(--secondary); }
+  .pulse-chip .ring i::before{ content:""; position:absolute; inset:0; border-radius:999px; background:var(--secondary);
+    animation:pulse 2.4s ease-out infinite; }
+  @keyframes pulse{ 0%{ transform:scale(1); opacity:.7 } 70%,100%{ transform:scale(3.4); opacity:0 } }
+  .float-chip2{ position:absolute; z-index:7; right:-18px; bottom:18%;
+    background:var(--surface); border-radius:14px; padding:8px 12px;
+    box-shadow:0 14px 30px -12px rgba(7,18,14,.4), 0 0 0 1px rgba(15,26,22,.05); }
+
+  /* section eyebrow */
+  .eyebrow{ display:inline-flex; align-items:center; gap:8px; font-weight:600; font-size:13px;
+    letter-spacing:.02em; color:var(--status-open);
+    background:var(--primary-container); padding:6px 13px; border-radius:999px; }
+  [data-dir="bold"] .eyebrow{ background:transparent; border:1.5px solid var(--brand); color:var(--brand); }
+
+  .section-title{ font-weight:800; letter-spacing:-.02em; line-height:1.06;
+    font-size:clamp(28px, 4.6vw, 46px); }
+  [data-dir="bold"] .section-title{ letter-spacing:-.035em; font-size:clamp(30px, 5.4vw, 56px); }
+
+  /* how-it-works carousel on mobile */
+  .scroller{ display:grid; gap:18px; }
+  @media (max-width:760px){
+    .scroller{ grid-auto-flow:column; grid-auto-columns:74%; overflow-x:auto;
+      scroll-snap-type:x mandatory; padding-bottom:8px; margin-inline:-22px; padding-inline:22px; }
+    .scroller>*{ scroll-snap-align:center; }
+    .scroller::-webkit-scrollbar{ display:none; }
+  }
+
+  /* FAQ */
+  details.faq{ border-bottom:1px solid color-mix(in oklab, var(--outline) 80%, transparent); }
+  details.faq summary{ list-style:none; cursor:pointer; display:flex; align-items:center; justify-content:space-between;
+    gap:18px; padding:22px 4px; font-weight:600; font-size:clamp(17px,2.1vw,20px); font-family:var(--font-head),sans-serif; }
+  details.faq summary::-webkit-details-marker{ display:none; }
+  details.faq .chev{ flex:none; transition:transform .2s ease; color:var(--primary); }
+  details.faq[open] .chev{ transform:rotate(45deg); }
+  details.faq .ans{ padding:0 4px 22px; color:color-mix(in oklab, var(--ink) 72%, white); max-width:62ch; line-height:1.6; }
+
+  header.nav{ transition:background .25s ease, box-shadow .25s ease, border-color .25s ease; }
+  header.nav.scrolled{ background:color-mix(in oklab, var(--bg) 82%, transparent);
+    -webkit-backdrop-filter:blur(14px) saturate(160%); backdrop-filter:blur(14px) saturate(160%);
+    box-shadow:0 1px 0 color-mix(in oklab, var(--outline) 60%, transparent); }
+
+  .langbtn{ font-weight:600; font-size:13px; padding:4px 9px; border-radius:8px; color:color-mix(in oklab, var(--ink) 55%, white); transition:.15s; }
+  .langbtn[aria-pressed="true"]{ color:#fff; background:var(--primary); }
+  header.nav:not(.scrolled) .onhero .langbtn{ color:rgba(255,255,255,.7); }
+  header.nav:not(.scrolled) .onhero .langbtn[aria-pressed="true"]{ color:#06281c; background:#fff; }
+  header.nav:not(.scrolled) .onhero .navlink{ color:rgba(255,255,255,.82); }
+  header.nav:not(.scrolled) .onhero .wordmark{ color:#fff; }
+  .navlink{ font-weight:500; color:color-mix(in oklab, var(--ink) 68%, white); transition:.15s; }
+  .navlink:hover{ color:var(--primary); }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ scroll-behavior:auto !important; }
+    .pulse-chip .ring i::before{ animation:none !important; }
+    .store:hover,.btn:active{ transform:none !important; }
+  }
+
+</style>
 </head>
+
 <body>
-  <main class="hero">
-    <div class="hero-card">
-      <div class="brand"><span class="mark" aria-hidden="true"></span><span>FarmaPerto</span></div>
 
-      <div class="langs" role="group" aria-label="Language / Idioma">
-        <button type="button" data-set="pt">PT</button>
-        <button type="button" data-set="en">EN</button>
+<!-- ════════════ HEADER ════════════ -->
+<header class="nav onhero fixed top-0 inset-x-0 z-50">
+  <div class="wrap flex items-center justify-between" style="height:68px;">
+    <a href="#top" class="flex items-center gap-2.5" aria-label="FarmaPerto — início">
+      <span aria-hidden="true">
+        <svg width="34" height="34" viewBox="0 0 64 64" fill="none">
+          <rect width="64" height="64" rx="16" fill="var(--brand)"/>
+          <path d="M32 12c-8.8 0-16 7-16 15.7 0 11 16 24.3 16 24.3s16-13.3 16-24.3C48 19 40.8 12 32 12z" fill="#fff"/>
+          <path d="M29 20h6v5h5v6h-5v5h-6v-5h-5v-6h5z" fill="var(--brand)"/>
+        </svg>
+      </span>
+      <span class="wordmark font-head" style="font-weight:800; font-size:19px; letter-spacing:-.01em;">FarmaPerto</span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-7" aria-label="Principal">
+      <a class="navlink" href="#features" data-pt="Funcionalidades" data-en="Features">Funcionalidades</a>
+      <a class="navlink" href="#how" data-pt="Como funciona" data-en="How it works">Como funciona</a>
+      <a class="navlink" href="#faq" data-pt="Perguntas" data-en="FAQ">Perguntas</a>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <div class="flex items-center gap-0.5 rounded-xl p-0.5" role="group" aria-label="Idioma / Language">
+        <button class="langbtn" data-lang-btn="pt" aria-pressed="true">PT</button>
+        <span style="opacity:.35;">|</span>
+        <button class="langbtn" data-lang-btn="en" aria-pressed="false">EN</button>
+      </div>
+      <a href="#download" class="btn btn-primary hidden sm:inline-flex whitespace-nowrap" style="min-height:42px; padding:0 18px; font-size:14px;" data-pt="Obter a app" data-en="Get the app">Obter a app</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ════════════ HERO ════════════ -->
+  <section class="hero-grad text-white pt-28 pb-20 md:pt-36 md:pb-28 overflow-hidden">
+    <div class="wrap grid md:grid-cols-2 gap-12 md:gap-8 items-center">
+      <div class="max-w-xl">
+        <span class="pill pill-duty" style="background:rgba(255,255,255,.12); color:#FCD9A8; border:1px solid rgba(252,217,168,.3);">
+          <span class="dot"></span><span data-pt="De serviço" data-en="On duty">De serviço</span>
+        </span>
+        <h1 class="font-head mt-5" style="font-weight:800; letter-spacing:-.035em; line-height:.98; font-size:clamp(44px,7.4vw,76px);">
+          <span data-pt="Aberta agora," data-en="Open now,">Aberta agora,</span><br/>
+          <span style="color:var(--primary-light);" data-pt="perto de ti." data-en="near you.">perto de ti.</span>
+        </h1>
+        <p class="mt-6 text-[17px] md:text-[19px] leading-relaxed" style="color:rgba(255,255,255,.82); max-width:33ch;"
+           data-pt="Encontra as farmácias de serviço e abertas mais perto de ti — em qualquer ponto de Portugal. Em segundos, grátis e sem registo."
+           data-en="Find the on-duty and open pharmacies nearest you — anywhere in Portugal. In seconds, free, and no sign-up.">Encontra as farmácias de serviço e abertas mais perto de ti — em qualquer ponto de Portugal. Em segundos, grátis e sem registo.</p>
+
+        <div class="store-row mt-8" id="download-badges-top"></div>
+
+        <p class="mt-5 text-[13.5px]" style="color:rgba(255,255,255,.62);"
+           data-pt="Grátis · Sem registo · A tua localização nunca é usada para publicidade"
+           data-en="Free · No sign-up · Your location is never used for advertising">Grátis · Sem registo · A tua localização nunca é usada para publicidade</p>
       </div>
 
-      <!-- Portuguese -->
-      <div data-lang="pt" class="show">
-        <div class="pill">Em breve</div>
-        <h1 class="tagline">Farmácias de serviço, perto de si.</h1>
-        <p class="lede">Encontre rapidamente as farmácias de serviço e abertas mais perto de si — em qualquer ponto de Portugal. Grátis e sem registo.</p>
-        <p class="stores">Brevemente na App Store e no Google Play.</p>
-      </div>
-
-      <!-- English -->
-      <div data-lang="en">
-        <div class="pill">Coming soon</div>
-        <h1 class="tagline">On-duty pharmacies, near you.</h1>
-        <p class="lede">Quickly find the on-duty and open pharmacies nearest you — anywhere in Portugal. Free, no sign-up.</p>
-        <p class="stores">Coming soon to the App Store and Google Play.</p>
-      </div>
-
-      <div class="foot">
-        <p data-lang="pt" class="show">
-          <a href="privacy/">Política de privacidade</a> &middot; <a href="mailto:natobytes@gmail.com">Contacto</a><br>
-          App independente, sem ligação a entidades oficiais. &copy; 2026 NatoBytes.
-        </p>
-        <p data-lang="en">
-          <a href="privacy/">Privacy policy</a> &middot; <a href="mailto:natobytes@gmail.com">Contact</a><br>
-          Independent app, not affiliated with any official entity. &copy; 2026 NatoBytes.
-        </p>
+      <!-- phones -->
+      <div class="relative mx-auto" style="width:min(280px,72vw);">
+        <div class="float-chip2">
+          <div class="flex items-center gap-2">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div>
+              <div style="font-size:11px; color:#5d6b64; font-weight:500;" data-pt="A 280 m de ti" data-en="280 m away">A 280 m de ti</div>
+              <div style="font-size:13px; color:var(--ink); font-weight:700; font-family:var(--font-head),sans-serif;">Farmácia Central</div>
+            </div>
+          </div>
+        </div>
+        <div class="pulse-chip">
+          <span class="ring"><i></i></span>
+          <span style="font-size:13px; font-weight:700; color:var(--status-open); font-family:var(--font-head),sans-serif;" data-pt="Aberta agora" data-en="Open now">Aberta agora</span>
+        </div>
+        <div class="phone">
+          <div class="notch"></div>
+          <div class="glare"></div>
+          <div class="screen">
+            <div class="ph-ph">
+              <svg class="ph-cross" viewBox="0 0 64 64" fill="none"><path d="M29 8h6v21h21v6H35v21h-6V35H8v-6h21z" fill="currentColor"/></svg>
+              <span class="ph-tag">home.png</span>
+            </div>
+            <img class="ph-img" src="screenshots/home.png" decoding="async" fetchpriority="high" data-pt-alt="Ecrã inicial da FarmaPerto a mostrar farmácias perto de ti" data-en-alt="FarmaPerto home screen showing pharmacies near you" alt="Ecrã inicial da FarmaPerto a mostrar farmácias perto de ti" onload="this.classList.add('loaded')" />
+          </div>
+        </div>
       </div>
     </div>
-  </main>
+  </section>
 
-  <script>
-    (function () {
-      function set(lang) {
-        document.documentElement.lang = lang;
-        document.querySelectorAll('[data-lang]').forEach(function (el) {
-          el.classList.toggle('show', el.getAttribute('data-lang') === lang);
-        });
-        document.querySelectorAll('.langs button').forEach(function (b) {
-          b.classList.toggle('active', b.getAttribute('data-set') === lang);
-        });
-        try { localStorage.setItem('fp_lang', lang); } catch (e) {}
-      }
-      var saved = null;
-      try { saved = localStorage.getItem('fp_lang'); } catch (e) {}
-      var initial = saved || ((navigator.language || 'pt').toLowerCase().indexOf('pt') === 0 ? 'pt' : 'en');
-      document.querySelectorAll('.langs button').forEach(function (b) {
-        b.addEventListener('click', function () { set(b.getAttribute('data-set')); });
-      });
-      set(initial);
-    })();
-  </script>
+  <!-- ════════════ FEATURES ════════════ -->
+  <section id="features" class="py-20 md:py-28">
+    <div class="wrap">
+      <div class="max-w-2xl">
+        <span class="eyebrow" data-pt="Funcionalidades" data-en="Features">Funcionalidades</span>
+        <h2 class="section-title mt-5" data-pt="Tudo o que precisas, com apenas um toque" data-en="Everything you need, in just one tap">Tudo o que precisas, com apenas um toque</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-12" id="features-grid"></div>
+    </div>
+  </section>
+
+  <!-- ════════════ HOW IT WORKS ════════════ -->
+  <section id="how" class="py-20 md:py-28" style="background:color-mix(in oklab, var(--primary-container) 38%, var(--surface));">
+    <div class="wrap">
+      <div class="max-w-2xl">
+        <span class="eyebrow" data-pt="Vê por dentro" data-en="See it in action">Vê por dentro</span>
+        <h2 class="section-title mt-5" data-pt="A app, ecrã a ecrã" data-en="The app, screen by screen">A app, ecrã a ecrã</h2>
+      </div>
+      <div class="scroller mt-12 sm:grid-cols-2 lg:grid-cols-3" style="grid-template-columns:repeat(3,1fr);" id="screens-grid"></div>
+    </div>
+  </section>
+
+  <!-- ════════════ TRUST BAND ════════════ -->
+  <section class="py-20 md:py-28" style="background:var(--primary-container);">
+    <div class="wrap text-center max-w-3xl">
+      <div class="flex justify-center gap-2 mb-7" aria-hidden="true">
+        <span class="pill pill-open"><span class="dot"></span>Aberta 24h</span>
+        <span class="pill pill-duty"><span class="dot"></span><span data-pt="De serviço" data-en="On duty">De serviço</span></span>
+        <span class="pill pill-closed"><span class="dot"></span><span data-pt="Fechada" data-en="Closed">Fechada</span></span>
+      </div>
+      <h2 class="font-head" style="font-weight:800; letter-spacing:-.025em; line-height:1.08; font-size:clamp(26px,4.4vw,44px); color:#06281c;">
+        <span data-pt="Sem contas, sem palavras-passe, sem compras." data-en="No accounts, no passwords, no shopping.">Sem contas, sem palavras-passe, sem compras.</span><br/>
+        <span style="color:var(--status-open);" data-pt="Faz uma coisa e fá-la bem." data-en="It does one thing and does it well.">Faz uma coisa e fá-la bem.</span>
+      </h2>
+      <p class="mt-6 text-[16px] md:text-[18px] leading-relaxed mx-auto" style="color:#15402f; max-width:60ch;"
+         data-pt="A tua localização é usada apenas para mostrar as farmácias mais próximas e nunca para publicidade."
+         data-en="Your location is only used to show the nearest pharmacies, never for advertising.">A tua localização é usada apenas para mostrar as farmácias mais próximas e nunca para publicidade.</p>
+    </div>
+  </section>
+
+  <!-- ════════════ FAQ ════════════ -->
+  <section id="faq" class="py-20 md:py-28">
+    <div class="wrap grid md:grid-cols-[0.8fr_1.2fr] gap-10 md:gap-16">
+      <div>
+        <span class="eyebrow" data-pt="Perguntas frequentes" data-en="FAQ">Perguntas frequentes</span>
+        <h2 class="section-title mt-5" data-pt="Boa pergunta." data-en="Good question.">Boa pergunta.</h2>
+        <p class="mt-5 leading-relaxed" style="color:color-mix(in oklab, var(--ink) 65%, white); max-width:34ch;"
+           data-pt="O essencial sobre a app. Continuas com dúvidas? Fala connosco."
+           data-en="The essentials about the app. Still wondering? Get in touch.">O essencial sobre a app. Continuas com dúvidas? Fala connosco.</p>
+      </div>
+      <div id="faq-list"></div>
+    </div>
+  </section>
+
+  <!-- ════════════ FINAL CTA ════════════ -->
+  <section id="download" class="hero-grad text-white py-20 md:py-28">
+    <div class="wrap text-center">
+      <span aria-hidden="true" class="inline-block">
+        <svg width="52" height="52" viewBox="0 0 64 64" fill="none">
+          <rect width="64" height="64" rx="16" fill="#fff" opacity=".12"/>
+          <path d="M32 14c-7.7 0-14 6.1-14 13.7 0 9.6 14 21.3 14 21.3s14-11.7 14-21.3C46 20.1 39.7 14 32 14z" fill="#fff"/>
+          <path d="M29 21h6v5h5v6h-5v5h-6v-5h-5v-6h5z" fill="var(--brand)"/>
+        </svg>
+      </span>
+      <h2 class="font-head mt-6 mx-auto" style="font-weight:800; letter-spacing:-.03em; line-height:1.02; font-size:clamp(34px,5.6vw,60px); max-width:14ch;"
+          data-pt="Encontra a tua farmácia" data-en="Find your pharmacy">Encontra a tua farmácia</h2>
+      <p class="mt-5 text-[17px] md:text-[18px]" style="color:rgba(255,255,255,.78);"
+         data-pt="Farmácia de serviço, aberta agora, perto de ti." data-en="On-duty pharmacy, open now, near you.">Farmácia de serviço, aberta agora, perto de ti.</p>
+      <div class="store-row justify-center mt-9" id="download-badges-bottom"></div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ════════════ FOOTER ════════════ -->
+<footer class="py-14" style="background:#07120E; color:rgba(255,255,255,.7);">
+  <div class="wrap">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+      <div>
+        <a href="#top" class="flex items-center gap-2.5" aria-label="FarmaPerto">
+          <svg width="30" height="30" viewBox="0 0 64 64" fill="none">
+            <rect width="64" height="64" rx="16" fill="var(--brand)"/>
+            <path d="M32 12c-8.8 0-16 7-16 15.7 0 11 16 24.3 16 24.3s16-13.3 16-24.3C48 19 40.8 12 32 12z" fill="#fff"/>
+            <path d="M29 20h6v5h5v6h-5v5h-6v-5h-5v-6h5z" fill="var(--brand)"/>
+          </svg>
+          <span class="font-head text-white" style="font-weight:800; font-size:18px;">FarmaPerto</span>
+        </a>
+        <p class="mt-3 text-[13.5px]" style="max-width:42ch;"
+           data-pt="App independente, não associada a nenhuma entidade oficial."
+           data-en="Independent app, not affiliated with any official entity.">App independente, não associada a nenhuma entidade oficial.</p>
+      </div>
+      <nav class="flex flex-wrap gap-x-7 gap-y-3 text-[14px]" aria-label="Rodapé">
+        <a class="hover:text-white transition" href="privacy/" data-pt="Privacidade" data-en="Privacy">Privacidade</a>
+        <a class="hover:text-white transition" href="mailto:natobytes@gmail.com" data-pt="Suporte" data-en="Support">Suporte</a>
+        <a class="hover:text-white transition" href="/" data-pt="Site" data-en="Website">Site</a>
+      </nav>
+    </div>
+    <div class="mt-10 pt-7 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-[13px]" style="border-top:1px solid rgba(255,255,255,.1);">
+      <span data-pt="Feito com ❤️ por NatoBytes" data-en="Made with ❤️ by NatoBytes">Feito com ❤️ por NatoBytes</span>
+      <span style="opacity:.6;">© 2026 FarmaPerto</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ───────────────── Bilingual content data ───────────────── */
+const FEATURES = [
+  ['map-pin',  'Farmácias de serviço perto de ti','On-duty pharmacies near you','Com a distância a partir da tua localização.','With the distance from your location.'],
+  ['clock',    'Estado em tempo real','Real-time status','Sabe se está aberta agora ou a que horas abre.','Know if it’s open now or when it opens.'],
+  ['map',      'Mapa e lista','Map and list','Vê as farmácias como preferes.','See pharmacies the way you prefer.'],
+  ['navigation','Direções, chamada e WhatsApp','Directions, call & WhatsApp','Tudo a um toque, a partir da app.','All one tap away, right from the app.'],
+  ['search',   'Pesquisa por região ou nome','Search by region or name','Distrito, concelho, freguesia ou nome da farmácia.','District, municipality, locality, or pharmacy name.'],
+  ['heart',    'Farmácias favoritas sempre à mão','Favorite pharmacies always at hand','Guarda farmácias e regiões para acesso rápido.','Save pharmacies and regions for quick access.'],
+  ['moon',     'Modo escuro','Dark mode','Confortável de usar de noite.','Easy on the eyes at night.'],
+  ['shield',   'Privado e sem complicações','Private and hassle-free','Sem contas, sem palavras-passe, sem compras.','No accounts, no passwords, no shopping.'],
+];
+
+const ICONS = {
+  'map-pin':'<path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/>',
+  'clock':'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  'map':'<path d="m9 4 6 2 5-2v14l-5 2-6-2-5 2V6l5-2Z"/><path d="M9 4v14M15 6v14"/>',
+  'navigation':'<path d="M3 11 22 2l-9 19-2-8-8-2Z"/>',
+  'search':'<circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/>',
+  'heart':'<path d="M20.8 5.6a5 5 0 0 0-7.1 0L12 7.3l-1.7-1.7a5 5 0 1 0-7.1 7.1L12 21l8.8-8.3a5 5 0 0 0 0-7.1Z"/>',
+  'moon':'<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/>',
+  'shield':'<path d="M12 3 5 6v6c0 4 3 6.5 7 9 4-2.5 7-5 7-9V6l-7-3Z"/><path d="m9 12 2 2 4-4"/>',
+};
+
+const SCREENS = [
+  ['home.png','Perto de ti','Near you','Ecrã inicial com as farmácias mais próximas','Home screen with the nearest pharmacies'],
+  ['oncall.png','De serviço esta noite','On duty tonight','Lista de farmácias de serviço esta noite','List of on-duty pharmacies tonight'],
+  ['detail.png','Ligar · Direções · WhatsApp','Call · Directions · WhatsApp','Detalhe de uma farmácia com ações rápidas','Pharmacy detail with quick actions'],
+  ['browse.png','Procurar por região','Browse by region','Pesquisa por distrito, concelho e freguesia','Search by district, municipality and locality'],
+  ['favorites.png','As tuas favoritas','Your favorites','Farmácias e regiões guardadas como favoritas','Pharmacies and regions saved as favorites'],
+  ['map.png','Mapa e lista','Map and list','Vista de mapa com as farmácias próximas','Map view with nearby pharmacies'],
+];
+
+const FAQ = [
+  ['É grátis?','Is it free?','Sim, totalmente grátis e sem registo.','Yes — completely free, no sign-up.'],
+  ['Como sabe quais estão de serviço?','How does it know which are on duty?','A app mostra as farmácias de serviço e o seu horário para a tua zona.','The app shows on-duty pharmacies and their hours for your area.'],
+  ['Precisa da minha localização?','Does it need my location?','É opcional — só para ordenar por proximidade. Podes usar sem ela.','It’s optional — only to sort by distance. You can use it without.'],
+  ['Está associada ao SNS / INFARMED?','Is it affiliated with any official body?','Não. É uma app independente.','No. It’s an independent app.'],
+];
+
+/* ───────────────── Store badges ───────────────── */
+function badge(store){
+  const isApple = store === 'appstore';
+  const icon = isApple
+    ? '<svg width="22" height="26" viewBox="0 0 22 26" fill="#fff" aria-hidden="true"><path d="M18.1 13.8c0-3 2.4-4.4 2.5-4.5-1.4-2-3.5-2.3-4.2-2.3-1.8-.2-3.5 1-4.4 1-.9 0-2.3-1-3.8-1C6.3 7 4.5 8.1 3.5 9.9c-2 3.5-.5 8.7 1.4 11.5.9 1.4 2 2.9 3.4 2.9 1.4-.1 1.9-.9 3.5-.9 1.6 0 2.1.9 3.5.9 1.4 0 2.4-1.4 3.3-2.8.6-.9.9-1.4 1.4-2.4-3.6-1.4-3.3-6.1-2.3-5.3ZM15.3 5.1c.8-.9 1.3-2.2 1.1-3.5-1.1.1-2.4.8-3.2 1.7-.7.8-1.3 2.1-1.1 3.3 1.2.1 2.4-.6 3.2-1.5Z"/></svg>'
+    : '<svg width="21" height="23" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3 13 12 4 21Z" fill="#00C3FF"/><path d="M4 3 13 12 20.4 9.7Z" fill="#00E676"/><path d="M13 12 20.4 9.7 20.4 14.3Z" fill="#FFCE00"/><path d="M4 21 13 12 20.4 14.3Z" fill="#FF3D47"/></svg>';
+  const top = isApple ? ['Descarrega na','Download on the'] : ['Disponível no','GET IT ON'];
+  const main = isApple ? 'App Store' : 'Google Play';
+  const dataStore = isApple ? 'appstore' : 'googleplay';
+  const href = isApple
+    ? 'https://apps.apple.com/app/id6774942781'
+    : 'https://play.google.com/store/apps/details?id=com.natobytes.farmacias';
+  return `<a href="${href}" target="_blank" rel="noopener" class="store" data-store="${dataStore}" aria-label="${main}">
+    ${icon}
+    <span class="text-left">
+      <span class="s-top block" data-pt="${top[0]}" data-en="${top[1]}">${top[0]}</span>
+      <span class="s-main block">${main}</span>
+    </span>
+  </a>`;
+}
+
+/* ───────────────── Render content ───────────────── */
+function render(){
+  document.getElementById('features-grid').innerHTML = FEATURES.map(f=>`
+    <div class="card p-6 h-full">
+      <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">${ICONS[f[0]]}</svg></div>
+      <h3 class="font-head mt-4" style="font-weight:700; font-size:17px; letter-spacing:-.01em; line-height:1.25;" data-pt="${f[1]}" data-en="${f[2]}">${f[1]}</h3>
+      <p class="mt-1.5 text-[14.5px] leading-relaxed" style="color:color-mix(in oklab, var(--ink) 62%, white);" data-pt="${f[3]}" data-en="${f[4]}">${f[3]}</p>
+    </div>`).join('');
+
+  document.getElementById('screens-grid').innerHTML = SCREENS.map(s=>`
+    <figure class="m-0">
+      <div class="phone" style="border-radius:36px; padding:7px;">
+        <div class="notch" style="height:18px;"></div>
+        <div class="glare"></div>
+        <div class="screen" style="border-radius:30px;">
+          <div class="ph-ph">
+            <svg class="ph-cross" viewBox="0 0 64 64" fill="none"><path d="M29 8h6v21h21v6H35v21h-6V35H8v-6h21z" fill="currentColor"/></svg>
+            <span class="ph-tag">${s[0]}</span>
+          </div>
+          <img class="ph-img" src="screenshots/${s[0]}" loading="lazy" decoding="async" data-pt-alt="${s[3]}" data-en-alt="${s[4]}" alt="${s[3]}" onload="this.classList.add('loaded')" />
+        </div>
+      </div>
+      <figcaption class="mt-4 flex items-center gap-2.5">
+        <span style="width:7px;height:7px;border-radius:999px;background:var(--primary);flex:none;"></span>
+        <span class="font-head" style="font-weight:700; font-size:15px;" data-pt="${s[1]}" data-en="${s[2]}">${s[1]}</span>
+      </figcaption>
+    </figure>`).join('');
+
+  document.getElementById('faq-list').innerHTML = FAQ.map(q=>`
+    <details class="faq">
+      <summary><span data-pt="${q[0]}" data-en="${q[1]}">${q[0]}</span>
+        <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+      </summary>
+      <div class="ans" data-pt="${q[2]}" data-en="${q[3]}">${q[2]}</div>
+    </details>`).join('');
+
+  const badges = badge('appstore') + badge('googleplay');
+  document.getElementById('download-badges-top').innerHTML = badges;
+  document.getElementById('download-badges-bottom').innerHTML = badges;
+}
+
+/* ───────────────── Language ───────────────── */
+let currentLang = 'pt';
+function setLang(lang){
+  currentLang = lang === 'en' ? 'en' : 'pt';
+  const en = currentLang === 'en';
+  document.documentElement.lang = en ? 'en' : 'pt-PT';
+  document.querySelectorAll('[data-pt]').forEach(el=>{
+    const v = el.getAttribute(en?'data-en':'data-pt'); if(v!=null) el.textContent = v;
+  });
+  document.querySelectorAll('[data-pt-alt]').forEach(el=>{
+    el.setAttribute('alt', el.getAttribute(en?'data-en-alt':'data-pt-alt'));
+  });
+  const md = document.querySelector('meta[name=description]');
+  if(md) md.setAttribute('content', en ? md.getAttribute('data-en') : md.getAttribute('data-pt'));
+  document.querySelectorAll('[data-lang-btn]').forEach(b=>b.setAttribute('aria-pressed', b.dataset.langBtn===currentLang));
+  try{ localStorage.setItem('fp-lang', currentLang); }catch(e){}
+}
+
+/* ───────────────── Init ───────────────── */
+render();
+
+// language: stored choice wins, else Portuguese default
+let startLang = 'pt';
+try{ const s = localStorage.getItem('fp-lang'); if(s) startLang = s; }catch(e){}
+setLang(startLang);
+
+document.querySelectorAll('[data-lang-btn]').forEach(b=>{
+  b.onclick = ()=>setLang(b.dataset.langBtn);
+});
+
+// sticky header style on scroll
+const nav = document.querySelector('header.nav');
+const onScroll = ()=>{ nav.classList.toggle('scrolled', window.scrollY > 28); };
+onScroll(); window.addEventListener('scroll', onScroll, { passive:true });
+</script>
+
 </body>
 </html>
