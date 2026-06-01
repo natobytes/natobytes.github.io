@@ -208,12 +208,12 @@
     font-size:clamp(28px, 4.6vw, 46px); }
   [data-dir="bold"] .section-title{ letter-spacing:-.035em; font-size:clamp(30px, 5.4vw, 56px); }
 
-  /* how-it-works carousel on mobile */
-  .scroller{ display:grid; gap:18px; }
+  /* how-it-works: 3-col grid on desktop, scroll-snap carousel on mobile */
+  .scroller{ display:grid; gap:18px; grid-template-columns:repeat(3,1fr); }
   @media (max-width:760px){
-    .scroller{ grid-auto-flow:column; grid-auto-columns:74%; overflow-x:auto;
+    .scroller{ grid-template-columns:none; grid-auto-flow:column; grid-auto-columns:74%; overflow-x:auto;
       scroll-snap-type:x mandatory; padding-bottom:8px; margin-inline:-22px; padding-inline:22px; }
-    .scroller>*{ scroll-snap-align:center; }
+    .scroller>*{ scroll-snap-align:center; min-width:0; }
     .scroller::-webkit-scrollbar{ display:none; }
   }
 
@@ -354,7 +354,7 @@
         <span class="eyebrow" data-pt="Vê por dentro" data-en="See it in action">Vê por dentro</span>
         <h2 class="section-title mt-5" data-pt="A app, ecrã a ecrã" data-en="The app, screen by screen">A app, ecrã a ecrã</h2>
       </div>
-      <div class="scroller mt-12 sm:grid-cols-2 lg:grid-cols-3" style="grid-template-columns:repeat(3,1fr);" id="screens-grid"></div>
+      <div class="scroller mt-12" id="screens-grid"></div>
     </div>
   </section>
 
