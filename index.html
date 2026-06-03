@@ -1,51 +1,444 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>NatoBytes - Comming soon</title>
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;display=swap" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-    </head>
-    <body>
-        <!-- Background Video-->
-        <video class="bg-video" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop"><source src="assets/mp4/bg.mp4" type="video/mp4" /></video>
-        <!-- Masthead-->
-        <div class="masthead">
-            <div class="masthead-content text-white">
-                <div class="container-fluid px-4 px-lg-0">
-                    <h1 class="fst-italic lh-1 mb-4">NatoBytes</h1>
-                    <h2 class="fst-italic lh-1 mb-4">Our Website is Coming Soon</h1>
-                    <p class="mb-5">We're working hard to finish the development of this site</p>
-                </div>
-            </div>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NatoBytes — Coding to New Heights</title>
+<meta name="description" content="NatoBytes is a Portugal-based software studio. Expert mobile app development for Android & iOS, plus websites, back-end and Agile project management." />
+<meta name="author" content="NatoBytes — Renato Almeida" />
+<meta name="theme-color" content="#16130D" />
+<link rel="canonical" href="https://natobytes.com/" />
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+<!-- Open Graph / Twitter -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="NatoBytes" />
+<meta property="og:title" content="NatoBytes — Coding to new heights" />
+<meta property="og:description" content="Portugal-based software studio. Expert mobile app development for Android & iOS, plus websites, back-end and Agile project management." />
+<meta property="og:url" content="https://natobytes.com/" />
+<meta property="og:image" content="https://natobytes.com/assets/og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="NatoBytes — Coding to new heights" />
+<meta name="twitter:description" content="Portugal-based software studio. Mobile apps for Android & iOS, websites, back-end and Agile delivery." />
+<meta name="twitter:image" content="https://natobytes.com/assets/og.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="altimeter" id="altimeter"></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="NatoBytes home">
+    <svg class="mark" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+      <rect x="1" y="1" width="42" height="42" rx="10" fill="#16130D"/>
+      <g fill="#4a4538">
+        <rect x="8" y="33" width="5" height="4" rx="1"/>
+        <rect x="14.7" y="33" width="5" height="4" rx="1"/>
+        <rect x="21.4" y="33" width="5" height="4" rx="1"/>
+        <rect x="28.1" y="33" width="5" height="4" rx="1"/>
+      </g>
+      <g transform="rotate(22 13 21)">
+        <rect x="11.4" y="12" width="3" height="19" rx="1.5" fill="#CFC8B8"/>
+        <rect x="6" y="8.5" width="13" height="5.4" rx="1.6" fill="#E8481E"/>
+      </g>
+      <ellipse cx="23.5" cy="25" rx="12" ry="8" fill="#FFCE2B"/>
+      <circle cx="30.5" cy="17" r="6.6" fill="#FFCE2B"/>
+      <path d="M36.5 14.6 L41.5 17 L36.5 19.4 Z" fill="#F2922A"/>
+      <circle cx="31.4" cy="15.4" r="1.5" fill="#16130D"/>
+    </svg>
+    <span class="word-block">
+      <span class="word">Nato<b>Bytes</b></span>
+      <span class="tag">Coding to new heights</span>
+    </span>
+  </a>
+  <nav class="nav-links" id="navLinks">
+    <a href="#services">Services</a>
+    <a href="#process">Process</a>
+    <a href="#work">Portfolio</a>
+    <a href="#clients">Clients</a>
+    <a href="#founder">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="nav-cta">
+    <a href="mailto:natobytes@gmail.com" class="btn">Email us<span class="arr">&#8599;</span></a>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero wrap" data-screen-label="Hero">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <div class="hero-eyebrow eyebrow rv">Portugal-based software studio</div>
+      <h1 class="h-xl rv" data-d="1"><span class="ln">Coding to</span><span class="ln">new <span class="accent">heights.</span></span></h1>
+      <p class="hero-sub lead rv" data-d="2">Expert mobile app development for <strong>Android &amp; iOS</strong> — plus the websites, back-end and project management to ship them. NatoBytes is a small studio in Santa Maria da Feira, deploying apps across a range of industries since inception.</p>
+      <div class="hero-cta rv" data-d="3">
+        <a href="#process" class="btn">How we work<span class="arr">&#8599;</span></a>
+        <a href="#work" class="btn btn--ghost">See our work</a>
+      </div>
+      <div class="hero-meta rv" data-d="4">
+        <div class="m"><span class="n">10+</span><span class="l">Years experience</span></div>
+        <div class="m"><span class="n">iOS · Android</span><span class="l">Native &amp; cross-platform</span></div>
+        <div class="m"><span class="n">Agile</span><span class="l">Scrum delivery</span></div>
+      </div>
+    </div>
+    <div class="hero-vis rv" data-d="2">
+      <div class="altrule" aria-hidden="true">
+        <span class="tick hi">SUMMIT — v1.0</span>
+        <span class="tick">RELEASE</span>
+        <span class="tick">BUILD</span>
+        <span class="tick">DESIGN</span>
+        <span class="tick">BASECAMP — kickoff</span>
+      </div>
+      <div class="phone">
+        <div class="screen"><img class="shot" src="assets/app-home.webp" width="680" height="1517" alt="FarmaPerto app home screen — find pharmacies near you" fetchpriority="high" /></div>
+      </div>
+      <div class="phone two">
+        <div class="screen"><img class="shot" src="assets/app-map.webp" width="680" height="1517" alt="FarmaPerto app map view — pharmacies plotted nearby" loading="lazy" /></div>
+      </div>
+      <svg class="mini-duck" style="left:-6%;bottom:2%;width:74px" viewBox="0 0 120 110" aria-hidden="true">
+        <ellipse cx="56" cy="74" rx="44" ry="29" fill="#FFCE2B"/>
+        <ellipse cx="42" cy="78" rx="24" ry="15" fill="#F5B800" opacity=".5"/>
+        <polygon points="16,66 0,52 22,90" fill="#FFCE2B"/>
+        <circle cx="86" cy="42" r="23" fill="#FFCE2B"/>
+        <polygon points="104,36 120,42 104,49" fill="#F2922A"/>
+        <circle cx="92" cy="37" r="3.6" fill="#16130D"/>
+        <circle cx="93.4" cy="35.8" r="1.2" fill="#FAF6EE"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="sec services wrap" id="services" data-screen-label="Services">
+  <div class="sec-head">
+    <div class="num-col"><span class="secnum">01 / What we do</span></div>
+    <h2 class="h-l rv balance">Everything it takes to get an idea off the ground.</h2>
+    <p class="intro lead rv" data-d="1">Mobile-first, but full-stack when it counts. We handle the build end to end so you ship one coherent product — not a pile of handoffs.</p>
+  </div>
+
+  <div class="svc-list">
+    <article class="svc lead-svc rv">
+      <span class="idx">01</span>
+      <div class="body">
+        <span class="badge">Our craft</span>
+        <h3>Mobile Apps · Android &amp; iOS</h3>
+        <p>Native and cross-platform apps, designed and built end to end. From children's language learning to crypto onboarding, we've shipped production apps people actually use.</p>
+        <div class="tags"><span class="chip">Kotlin</span><span class="chip">Swift</span><span class="chip">Native</span><span class="chip">Cross-platform</span></div>
+      </div>
+      <span class="plus">+</span>
+    </article>
+
+    <article class="svc rv">
+      <span class="idx">02</span>
+      <div class="body">
+        <h3>Websites</h3>
+        <p>Fast, responsive websites and web apps that carry your brand from phone to desktop without missing a beat.</p>
+        <div class="tags"><span class="chip">React</span><span class="chip">Next.js</span><span class="chip">Responsive</span></div>
+      </div>
+      <span class="plus">+</span>
+    </article>
+
+    <article class="svc rv">
+      <span class="idx">03</span>
+      <div class="body">
+        <h3>Project Management</h3>
+        <p>Clear specs, honest roadmaps and steady shipping under Agile &amp; Scrum — every requirement met, on time and in budget.</p>
+        <div class="tags"><span class="chip">Agile</span><span class="chip">Scrum</span><span class="chip">Roadmapping</span></div>
+      </div>
+      <span class="plus">+</span>
+    </article>
+
+    <article class="svc rv">
+      <span class="idx">04</span>
+      <div class="body">
+        <h3>Back-end &amp; DevOps</h3>
+        <p>APIs, infrastructure and pipelines that keep your product reliable as it climbs — from first deploy to scale.</p>
+        <div class="tags"><span class="chip">Node.js</span><span class="chip">APIs</span><span class="chip">CI/CD</span><span class="chip">Cloud</span></div>
+      </div>
+      <span class="plus">+</span>
+    </article>
+  </div>
+</section>
+
+<!-- ============ PROCESS (dark) + DUCK ============ -->
+<section class="sec process dark" id="process" data-screen-label="Process">
+  <div class="wrap">
+    <div class="proc-top">
+      <div>
+        <span class="secnum rv">02 / How we work</span>
+        <h2 class="h-l rv balance" data-d="1" style="margin-top:18px">We turn your <span class="accent">vision</span> into reality — every line of code a step toward <span class="accent">tech excellence</span>.</h2>
+      </div>
+      <p class="proc-note rv" data-d="2">We treat every project as uniquely as the clients we serve — working hand in hand to deliver a quality product, fulfilling every requirement, on time and in budget.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step rv"><span class="bar"></span><span class="n">01</span><div class="k">Discover</div><p>We meet to discuss your unique vision and requirements, and agree on the concept and core functionality.</p></div>
+      <div class="step rv" data-d="1"><span class="bar"></span><span class="n">02</span><div class="k">Specify</div><p>NatoBytes provides a specification document and roadmap for you to review and agree upon.</p></div>
+      <div class="step rv" data-d="2"><span class="bar"></span><span class="n">03</span><div class="k">Design</div><p>Where required, UI &amp; UX mockups are created in alignment with the agreed project specification.</p></div>
+      <div class="step rv" data-d="3"><span class="bar"></span><span class="n">04</span><div class="k">Build</div><p>Once spec and contract are agreed, development begins and concludes under Agile &amp; Scrum methodology.</p></div>
+    </div>
+
+    <!-- DUCK -->
+    <div class="duck-zone rv">
+      <div class="duck-wrap">
+        <div class="duck-bubble" id="duckBubble">Tap me — I debug for a living.</div>
+        <svg class="duck" id="duck" viewBox="0 0 210 190" role="button" tabindex="0" aria-label="Tap the rubber duck for a debugging quip">
+          <ellipse cx="98" cy="128" rx="74" ry="50" fill="#FFCE2B"/>
+          <ellipse cx="80" cy="134" rx="42" ry="28" fill="#F5B800" opacity="0.5"/>
+          <polygon points="22,118 0,96 30,150" fill="#FFCE2B"/>
+          <circle cx="146" cy="74" r="40" fill="#FFCE2B"/>
+          <polygon points="178,64 210,80 178,96" fill="#F2922A"/>
+          <path d="M178 80 q14 5 0 10" fill="#E8821E"/>
+          <circle cx="156" cy="66" r="7" fill="#16130D"/>
+          <circle cx="159" cy="63" r="2.4" fill="#FAF6EE"/>
+        </svg>
+      </div>
+      <div class="duck-copy">
+        <span class="secnum" style="color:var(--accent)">Step zero</span>
+        <h3 class="h-m rv" data-d="1">Talk to the duck.</h3>
+        <p class="rv" data-d="2">Before a single line ships, we explain the problem out loud — to a small rubber duck. It's the oldest debugging trick in the book, and it keeps our thinking honest, our specs tight, and our shipping calm. Yours is listening too.</p>
+        <p class="hint">Tap the duck &#8594;</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PORTFOLIO ============ -->
+<section class="sec work wrap" id="work" data-screen-label="Work">
+  <div class="sec-head">
+    <div class="num-col"><span class="secnum">03 / Portfolio</span></div>
+    <h2 class="h-l rv balance">Apps we've shipped, end to end.</h2>
+    <p class="intro lead rv" data-d="1">A selection of apps we've shipped — from gamified learning to crypto onboarding, with a pharmacy finder on the workbench right now.</p>
+  </div>
+
+  <div class="work-grid">
+    <article class="work-card rv">
+      <a class="work-link" href="https://www.lifegap.org/" target="_blank" rel="noopener">
+      <div class="work-stage">
+        <span class="ribbon">EdTech</span>
+        <div class="phone"><div class="screen"><div class="shot-ph"><span class="glyph">L</span><span class="nm">LifeGap</span><span class="cap">Screenshot soon</span></div></div></div>
+      </div>
+      <div class="work-body">
+        <h3>LifeGap Educational App</h3>
+        <p>Makes learning life skills fun by gamifying modules built for the teen-to-young-adult demographic.</p>
+        <div class="meta"><span class="chip">Gamification</span><span class="chip">iOS</span><span class="chip">Android</span></div>
+        <span class="client">lifegap.org<span class="go">&#8599;</span></span>
+      </div>
+      </a>
+    </article>
+
+    <article class="work-card rv" data-d="1">
+      <div class="work-stage">
+        <span class="ribbon">Fintech</span>
+        <div class="phone"><div class="screen"><div class="shot-ph"><span class="glyph">P</span><span class="nm">Pump Pad</span><span class="cap">Screenshot soon</span></div></div></div>
+      </div>
+      <div class="work-body">
+        <h3>Pump Pad Crypto App</h3>
+        <p>A Web2 app that drives crypto adoption and brings real usability to Web3.</p>
+        <div class="meta"><span class="chip">Web3</span><span class="chip">Fintech</span></div>
+        <div class="store-mini">
+          <span class="store-mini-label">Download</span>
+          <a href="https://apps.apple.com/in/app/pumppad-app/id6547861718" target="_blank" rel="noopener" aria-label="Download Pump Pad on the App Store" title="App Store"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.36 12.78c-.02-2.07 1.69-3.06 1.77-3.11-.96-1.41-2.46-1.6-3-1.62-1.27-.13-2.49.75-3.14.75-.65 0-1.65-.73-2.71-.71-1.39.02-2.68.81-3.4 2.06-1.45 2.52-.37 6.25 1.04 8.29.69 1 1.51 2.12 2.58 2.08 1.04-.04 1.43-.67 2.69-.67 1.25 0 1.61.67 2.71.65 1.12-.02 1.83-1.02 2.51-2.02.79-1.16 1.12-2.28 1.14-2.34-.03-.01-2.18-.84-2.2-3.32zM14.3 5.79c.57-.69.96-1.65.85-2.61-.83.03-1.83.55-2.42 1.24-.53.61-.99 1.59-.87 2.53.93.07 1.87-.47 2.44-1.16z"/></svg></a>
+          <a href="https://play.google.com/store/apps/details?id=app.pumppad.android" target="_blank" rel="noopener" aria-label="Download Pump Pad on Google Play" title="Google Play"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3.6 2.1c-.2.2-.3.5-.3.9v18c0 .4.1.7.3.9l10-9.9-10-9.9zM16.8 9.3 5.9 3.1l8.4 8.3 2.5-2.1zM5.9 20.9l10.9-6.2-2.5-2.1-8.4 8.3zm12-10.2-2.3 2.3 2.3 2.3 2.8-1.6c.9-.5.9-1.5 0-2l-2.8-1.6z"/></svg></a>
         </div>
-        <!-- Social Icons-->
-        <!-- For more icon options, visit https://fontawesome.com/icons?d=gallery&p=2&s=brands-->
-        <div class="social-icons">
-            <div class="d-flex flex-row flex-lg-column justify-content-center align-items-center h-100 mt-3 mt-lg-0">
-                <a class="btn btn-dark m-3" href="https://github.com/natobytes" target="_blank"><i class="fab fa-github"></i></a>
-                <!-- <a class="btn btn-dark m-3" href="#!"><i class="fab fa-facebook-f"></i></a> -->
-                <!-- <a class="btn btn-dark m-3" href="#!"><i class="fab fa-instagram"></i></a> -->
-            </div>
-        </div>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <!-- * *                               SB Forms JS                               * *-->
-        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-    </body>
+      </div>
+    </article>
+
+    <article class="work-card rv">
+      <a class="work-link" href="farmaperto/" aria-label="FarmaPerto pharmacy app — view the landing page">
+      <div class="work-stage">
+        <span class="ribbon ribbon--dev">In development</span>
+        <div class="phone"><div class="screen"><img class="shot" src="assets/app-detail.webp" width="680" height="1517" alt="FarmaPerto pharmacy app — pharmacy details, hours and services" loading="lazy" /></div></div>
+      </div>
+      <div class="work-body">
+        <h3>FarmaPerto · Pharmacy App</h3>
+        <p>Helps people find pharmacies near them — opening hours, on-call schedules and services at a glance. Currently in active development.</p>
+        <div class="meta"><span class="chip">Health</span><span class="chip">iOS</span><span class="chip">Android</span></div>
+        <span class="client client--dev"><span class="dev-dot"></span>In development<span class="go">&#8599;</span></span>
+      </div>
+      </a>
+    </article>
+
+    <article class="work-card empty rv" data-d="1">
+      <div class="empty-inner">
+        <svg viewBox="0 0 120 110" aria-hidden="true"><ellipse cx="56" cy="74" rx="44" ry="29" fill="#E7DECE"/><polygon points="16,66 0,52 22,90" fill="#E7DECE"/><circle cx="86" cy="42" r="23" fill="#E7DECE"/><polygon points="104,36 120,42 104,49" fill="#D9CFBA"/><circle cx="92" cy="37" r="3.4" fill="#16130D" opacity=".35"/></svg>
+        <h3>Your app here</h3>
+        <p>The next one's still on the workbench. Could be yours.</p>
+        <a href="#contact" class="empty-cta">Start a project &#8599;</a>
+      </div>
+    </article>
+  </div>
+
+  <div class="store-cta rv">
+    <a href="https://apps.apple.com/in/developer/natobytes/id1757642849" target="_blank" rel="noopener" class="btn"><svg class="btn-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.36 12.78c-.02-2.07 1.69-3.06 1.77-3.11-.96-1.41-2.46-1.6-3-1.62-1.27-.13-2.49.75-3.14.75-.65 0-1.65-.73-2.71-.71-1.39.02-2.68.81-3.4 2.06-1.45 2.52-.37 6.25 1.04 8.29.69 1 1.51 2.12 2.58 2.08 1.04-.04 1.43-.67 2.69-.67 1.25 0 1.61.67 2.71.65 1.12-.02 1.83-1.02 2.51-2.02.79-1.16 1.12-2.28 1.14-2.34-.03-.01-2.18-.84-2.2-3.32zM14.3 5.79c.57-.69.96-1.65.85-2.61-.83.03-1.83.55-2.42 1.24-.53.61-.99 1.59-.87 2.53.93.07 1.87-.47 2.44-1.16z"/></svg>App Store<span class="arr">&#8599;</span></a>
+    <a href="https://play.google.com/store/apps/dev?id=4863474002152241909" target="_blank" rel="noopener" class="btn btn--ghost"><svg class="btn-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3.6 2.1c-.2.2-.3.5-.3.9v18c0 .4.1.7.3.9l10-9.9-10-9.9zM16.8 9.3 5.9 3.1l8.4 8.3 2.5-2.1zM5.9 20.9l10.9-6.2-2.5-2.1-8.4 8.3zm12-10.2-2.3 2.3 2.3 2.3 2.8-1.6c.9-.5.9-1.5 0-2l-2.8-1.6z"/></svg>Google Play<span class="arr">&#8599;</span></a>
+  </div>
+</section>
+
+<!-- ============ CLIENTS & PARTNERS ============ -->
+<section class="sec clients" id="clients" data-screen-label="Clients">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="num-col"><span class="secnum">04 / Worked &amp; partnered with</span></div>
+      <h2 class="h-l rv balance">In good company.</h2>
+      <p class="intro lead rv" data-d="1">Start-ups and multi-nationals alike. Two slots are open for new partners this quarter.</p>
+    </div>
+    <div class="client-grid">
+      <div class="client-cell rv">
+        <span class="logo-mono">L</span>
+        <span class="cname">LifeGap</span><span class="field">EdTech</span>
+      </div>
+      <div class="client-cell rv" data-d="1">
+        <span class="logo-mono">P</span>
+        <span class="cname">Pump Pad</span><span class="field">Fintech</span>
+      </div>
+      <div class="client-cell rv" data-d="2">
+        <span class="logo-mono open">+</span>
+        <span class="cname">Your brand</span><span class="field">Next up</span>
+      </div>
+      <div class="client-cell rv" data-d="3">
+        <span class="logo-mono open">+</span>
+        <span class="cname">Your brand</span><span class="field">Next up</span>
+      </div>
+    </div>
+    <div class="client-note rv">
+      <span class="stamp">🦆 Spot reserved</span>
+      <span>Two slots open for new partners this quarter.</span>
+    </div>
+  </div>
+</section>
+<section class="sec tech" data-screen-label="Tech stack">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="num-col"><span class="secnum">05 / Stack</span></div>
+      <h2 class="h-l rv balance">The tools we reach for.</h2>
+      <p class="intro lead rv" data-d="1">A pragmatic, battle-tested stack — chosen per project, never cargo-culted.</p>
+    </div>
+    <div class="tech-grid">
+      <span class="tech-pill rv"><span class="d"></span>Kotlin</span>
+      <span class="tech-pill rv" data-d="1"><span class="d"></span>Swift</span>
+      <span class="tech-pill rv" data-d="1"><span class="d"></span>Java</span>
+      <span class="tech-pill rv" data-d="2"><span class="d"></span>TypeScript</span>
+      <span class="tech-pill rv" data-d="2"><span class="d"></span>JavaScript</span>
+      <span class="tech-pill rv" data-d="2"><span class="d"></span>React</span>
+      <span class="tech-pill rv" data-d="2"><span class="d"></span>Next.js</span>
+      <span class="tech-pill rv" data-d="3"><span class="d"></span>Node.js</span>
+      <span class="tech-pill rv" data-d="3"><span class="d"></span>Firebase</span>
+      <span class="tech-pill rv" data-d="3"><span class="d"></span>Docker</span>
+      <span class="tech-pill rv" data-d="4"><span class="d"></span>CI/CD</span>
+      <span class="tech-pill rv" data-d="4"><span class="d"></span>REST &amp; GraphQL</span>
+      <span class="tech-pill rv" data-d="4"><span class="d"></span>Agile / Scrum</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOUNDER ============ -->
+<section class="sec founder wrap" id="founder" data-screen-label="Founder">
+  <div class="founder-grid">
+    <div class="founder-photo rv">
+      <div class="frame"><img src="assets/renato.jpg" width="912" height="1000" alt="Renato Almeida, founder of NatoBytes" loading="lazy" /></div>
+      <div class="badge">Founded &amp; led by<b>Renato Almeida</b></div>
+    </div>
+    <div class="founder-body">
+      <span class="secnum">06 / The studio</span>
+      <h2 class="h-l rv balance" data-d="1" style="margin-top:14px">One senior engineer, a decade of shipping.</h2>
+      <p class="who">Founder &amp; Lead Engineer</p>
+      <h3 class="rv" data-d="1">Renato Almeida</h3>
+      <p class="lead rv" data-d="2" style="margin-top:16px">Renato has spent over ten years in the industry — across back-end, DevOps and, most notably, Android and iOS mobile app development.</p>
+      <p class="lead rv" data-d="3" style="margin-top:14px">He's worked across a range of industries and fields of expertise, from start-ups to large multi-national corporations, in both development and managerial roles. NatoBytes brings that seniority to every project — hands-on, hand in hand.</p>
+      <div class="founder-links rv" data-d="3">
+        <a href="https://github.com/tallnato" target="_blank" rel="noopener">GitHub · @tallnato<span class="arr">&#8599;</span></a>
+        <a href="https://www.linkedin.com/in/tallnato/" target="_blank" rel="noopener">LinkedIn · in/tallnato<span class="arr">&#8599;</span></a>
+      </div>
+      <div class="quals rv" data-d="3">
+        <div class="q"><span class="n">10+</span><span class="l">Years in industry</span></div>
+        <div class="q"><span class="n">iOS · Android</span><span class="l">Mobile specialist</span></div>
+        <div class="q"><span class="n">PT</span><span class="l">Santa Maria da Feira</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT + FOOTER (dark) ============ -->
+<section class="sec contact dark" id="contact" data-screen-label="Contact">
+  <div class="wrap">
+    <div class="duck-row rv" aria-hidden="true">
+      <svg viewBox="0 0 120 110"><ellipse cx="56" cy="74" rx="44" ry="29" fill="#FFCE2B"/><polygon points="16,66 0,52 22,90" fill="#FFCE2B"/><circle cx="86" cy="42" r="23" fill="#FFCE2B"/><polygon points="104,36 120,42 104,49" fill="#F2922A"/><circle cx="92" cy="37" r="3.4" fill="#16130D"/></svg>
+      <svg viewBox="0 0 120 110"><ellipse cx="56" cy="74" rx="44" ry="29" fill="#FFCE2B"/><polygon points="16,66 0,52 22,90" fill="#FFCE2B"/><circle cx="86" cy="42" r="23" fill="#FFCE2B"/><polygon points="104,36 120,42 104,49" fill="#F2922A"/><circle cx="92" cy="37" r="3.4" fill="#16130D"/></svg>
+      <svg viewBox="0 0 120 110"><ellipse cx="56" cy="74" rx="44" ry="29" fill="#FFCE2B"/><polygon points="16,66 0,52 22,90" fill="#FFCE2B"/><circle cx="86" cy="42" r="23" fill="#FFCE2B"/><polygon points="104,36 120,42 104,49" fill="#F2922A"/><circle cx="92" cy="37" r="3.4" fill="#16130D"/></svg>
+    </div>
+    <span class="eyebrow no-rule rv" style="justify-content:center;display:flex">Let's get our ducks in a row</span>
+    <h2 class="big rv" data-d="1">Coding to new <em>heights.</em></h2>
+    <p class="sub rv" data-d="2">Got an app, a website, or a vision that needs a senior team? Tell us about it — and yes, we'll bring the duck.</p>
+    <div class="cbtns rv" data-d="3">
+      <a href="mailto:natobytes@gmail.com" class="btn">Email us<span class="arr">&#8599;</span></a>
+      <a href="https://github.com/natobytes" target="_blank" rel="noopener" class="btn btn--ghost">GitHub</a>
+      <a href="https://www.instagram.com/natobytes" target="_blank" rel="noopener" class="btn btn--ghost">Instagram</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer dark">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="fcol">
+        <a class="brand" href="#top">
+          <svg class="mark" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+            <rect x="1" y="1" width="42" height="42" rx="10" fill="#221d14" stroke="rgba(241,235,223,.14)"/>
+            <g fill="#5a5343">
+              <rect x="8" y="33" width="5" height="4" rx="1"/>
+              <rect x="14.7" y="33" width="5" height="4" rx="1"/>
+              <rect x="21.4" y="33" width="5" height="4" rx="1"/>
+              <rect x="28.1" y="33" width="5" height="4" rx="1"/>
+            </g>
+            <g transform="rotate(22 13 21)">
+              <rect x="11.4" y="12" width="3" height="19" rx="1.5" fill="#CFC8B8"/>
+              <rect x="6" y="8.5" width="13" height="5.4" rx="1.6" fill="#E8481E"/>
+            </g>
+            <ellipse cx="23.5" cy="25" rx="12" ry="8" fill="#FFCE2B"/>
+            <circle cx="30.5" cy="17" r="6.6" fill="#FFCE2B"/>
+            <path d="M36.5 14.6 L41.5 17 L36.5 19.4 Z" fill="#F2922A"/>
+            <circle cx="31.4" cy="15.4" r="1.5" fill="#16130D"/>
+          </svg>
+          <span class="word-block"><span class="word">Nato<b style="color:#E8481E">Bytes</b></span><span class="tag" style="color:rgba(241,235,223,.5)">Coding to new heights</span></span>
+        </a>
+        <p class="blurb">Portugal-based software studio. Mobile apps, websites, and the project management to ship them — built to climb.</p>
+      </div>
+      <div class="fcol">
+        <h4>Explore</h4>
+        <a href="#work">Work</a>
+        <a href="#process">Process</a>
+        <a href="#services">Services</a>
+        <a href="#founder">About</a>
+      </div>
+      <div class="fcol">
+        <h4>Connect</h4>
+        <a href="mailto:natobytes@gmail.com">natobytes@gmail.com</a>
+        <a href="https://github.com/natobytes" target="_blank" rel="noopener">github.com/natobytes</a>
+        <a href="https://www.instagram.com/natobytes" target="_blank" rel="noopener">@natobytes</a>
+      </div>
+      <div class="fcol">
+        <h4>Where</h4>
+        <p>Santa Maria da Feira</p>
+        <p>Portugal</p>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>&copy; <span id="year">2026</span> NatoBytes — Coding to new heights. · NIF 517591367</span>
+      <span>Debugged by a rubber duck. 🦆</span>
+    </div>
+  </div>
+</footer>
+
+</main>
+
+<script src="main.js"></script>
+</body>
 </html>
