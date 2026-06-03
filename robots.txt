@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://natobytes.com/sitemap.xml
