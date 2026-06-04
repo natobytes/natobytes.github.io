@@ -492,8 +492,8 @@ function badge(store){
   const main = isApple ? 'App Store' : 'Google Play';
   const dataStore = isApple ? 'appstore' : 'googleplay';
   const href = isApple
-    ? 'https://apps.apple.com/app/id6774942781'
-    : 'https://play.google.com/store/apps/details?id=com.natobytes.farmacias';
+    ? 'https://apps.apple.com/app/apple-store/id6774942781?pt=127201759&ct=website&mt=8'
+    : 'https://play.google.com/store/apps/details?id=com.natobytes.farmacias&utm_source=website';
   return `<a href="${href}" target="_blank" rel="noopener" class="store" data-store="${dataStore}" aria-label="${main}">
     ${icon}
     <span class="text-left">
