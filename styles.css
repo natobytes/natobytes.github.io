@@ -443,3 +443,9 @@ h1,h2,h3,h4{font-family:var(--ff-display);font-weight:600;line-height:1.02;lette
 }
 .client-cell:hover .logo-mono{transform:translateY(-3px);opacity:1}
 .logo-mono.open{background:transparent;color:var(--accent);border:1.5px dashed var(--line);font-weight:600}
+.logo-img{
+  height:32px;width:auto;max-width:128px;object-fit:contain;
+  opacity:.9;transition:transform .35s,opacity .35s;
+}
+.client-cell:hover .logo-img{transform:translateY(-3px);opacity:1}
+.logo-img--icon{height:38px;width:38px;border-radius:11px}
