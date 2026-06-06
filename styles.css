@@ -449,3 +449,4 @@ h1,h2,h3,h4{font-family:var(--ff-display);font-weight:600;line-height:1.02;lette
 }
 .client-cell:hover .logo-img{transform:translateY(-3px);opacity:1}
 .logo-img--icon{height:38px;width:38px;border-radius:11px}
+.logo-slot{display:flex;align-items:center;justify-content:center;height:42px;margin-bottom:10px;text-decoration:none}
