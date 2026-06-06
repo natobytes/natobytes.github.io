@@ -354,6 +354,8 @@ h1,h2,h3,h4{font-family:var(--ff-display);font-weight:600;line-height:1.02;lette
 }
 .tech-pill:hover{transform:translateY(-3px);background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .tech-pill .d{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.tech-pill .ti{width:16px;height:16px;fill:currentColor;flex:none}
+.ti-sprite{position:absolute;width:0;height:0;overflow:hidden}
 
 /* ============================================================
    FOUNDER
