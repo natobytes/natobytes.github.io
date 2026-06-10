@@ -539,7 +539,7 @@ h1,h2,h3,h4{font-family:var(--ff-display);font-weight:700;line-height:.98;letter
 .contact .sub{max-width:46ch;margin:0 auto 38px;color:rgba(241,235,223,.82)}
 .contact .cbtns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 .footer{border-top:2px solid var(--line-dark);padding-block:46px}
-.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;align-items:start}
+.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:36px;align-items:start}
 .footer .brand .word{color:var(--paper)}
 .footer .fcol h4{font-family:var(--ff-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:rgba(241,235,223,.5);font-weight:700;margin-bottom:16px}
 .footer .fcol a,.footer .fcol p{display:block;font-size:14px;color:rgba(241,235,223,.8);margin-bottom:10px;transition:color .2s;width:fit-content}
