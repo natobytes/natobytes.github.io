@@ -16,9 +16,9 @@
   --paper-3:#EAE0CD;        /* sunk panel — grounds              */
   --ink:#16130D;            /* warm near-black — body + reverse  */
   --ink-soft:#6E6452;       /* faded graphite — captions         */
-  --red:#C8542F;            /* INK 1 · terracotta vermillion     */
-  --yellow:#EDC25C;         /* INK 2 · ochre duck yellow         */
-  --over:#A34A28;           /* overprint — flat third ink (dark) */
+  --red:#E8481E;            /* INK 1 · vermillion                */
+  --yellow:#FFCE2B;         /* INK 2 · duck yellow               */
+  --over:#C9400F;           /* overprint — flat third ink (dark) */
   --teal:#1E5E55;           /* third spot — links/marks on light */
 
   --line:rgba(22,19,13,.18);
