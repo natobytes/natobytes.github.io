@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Not found — NatoBytes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<script>
+  // GitHub Pages is case-sensitive and can't redirect server-side.
+  // Old links use /farmaperto/…; the folder is now /FarmaPerto/….
+  (function () {
+    var p = location.pathname;
+    if (/^\/farmaperto(\/|$)/i.test(p) && !/^\/FarmaPerto/.test(p)) {
+      location.replace('/FarmaPerto' + p.replace(/^\/[Ff]arma[Pp]erto/, '') + location.search + location.hash);
+    }
+  })();
+</script>
+<style>
+  body{font-family:"Space Mono",ui-monospace,monospace;background:#F1EBDF;color:#16130D;
+       display:grid;place-items:center;min-height:100vh;margin:0;text-align:center}
+  a{color:#E8481E}
+</style>
+</head>
+<body>
+  <p>404 — page not found.<br /><a href="/">Back to natobytes.com</a></p>
+</body>
+</html>
