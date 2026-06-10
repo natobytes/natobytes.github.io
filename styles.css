@@ -343,10 +343,16 @@ h1,h2,h3,h4{font-family:var(--ff-display);font-weight:700;line-height:.98;letter
    ============================================================ */
 .work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(22px,3vw,38px)}
 .work-card{
+  position:relative;
   background:var(--paper-2);border:2px solid var(--ink);overflow:hidden;
   display:flex;flex-direction:column;box-shadow:var(--shadow) var(--ink);
   transition:transform .2s cubic-bezier(.2,.8,.2,1),box-shadow .2s cubic-bezier(.2,.8,.2,1);
 }
+/* stretched title link — makes the whole card clickable while the
+   store buttons (z-index above) stay independently tappable */
+.work-card .stretch::after{content:"";position:absolute;inset:0;z-index:1}
+.work-card:hover .stretch{color:var(--red)}
+.work-card .store-mini a{position:relative;z-index:2}
 .work-card:hover{transform:translate(-4px,-4px);box-shadow:11px 11px 0 var(--ink)}
 .work-card:nth-child(2n){box-shadow:var(--shadow) var(--teal)}
 .work-card:nth-child(2n):hover{box-shadow:11px 11px 0 var(--teal)}
