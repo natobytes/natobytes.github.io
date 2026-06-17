@@ -431,17 +431,19 @@ h1,h2,h3,h4{font-family:var(--ff-display);font-weight:700;line-height:.98;letter
    CLIENTS & PARTNERS
    ============================================================ */
 .clients{background:var(--paper-3)}
-.client-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--ink);border:2px solid var(--ink)}
-.client-cell{background:var(--paper-2);aspect-ratio:3/1.6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:18px;transition:background .3s;position:relative}
+.client-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--ink);border:2px solid var(--ink)}
+.client-cell{background:var(--paper-2);aspect-ratio:3/1.3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:18px;transition:background .3s;position:relative}
 .client-cell:hover{background:var(--paper)}
+.cmeta{position:relative;display:flex;flex-direction:column;align-items:center}
 .client-cell .cname{font-family:var(--ff-mono);font-size:12px;letter-spacing:.02em;color:var(--ink-soft);text-transform:uppercase;text-align:center}
-.client-cell .field{font-family:var(--ff-mono);font-size:10px;letter-spacing:.04em;color:var(--red);text-transform:uppercase;opacity:0;transition:opacity .3s}
+.client-cell .field{position:absolute;top:calc(100% + 5px);left:50%;transform:translateX(-50%);white-space:nowrap;font-family:var(--ff-mono);font-size:10px;letter-spacing:.04em;color:var(--red);text-transform:uppercase;opacity:0;transition:opacity .3s}
 .client-cell:hover .field{opacity:1}
 .client-note{margin-top:28px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;font-family:var(--ff-mono);font-size:12.5px;color:var(--ink-soft)}
-.logo-slot{display:flex;align-items:center;justify-content:center;height:42px;margin-bottom:10px;text-decoration:none}
+.logo-slot{display:flex;align-items:center;justify-content:center;height:42px;text-decoration:none}
 .logo-img{height:32px;width:auto;max-width:128px;object-fit:contain;opacity:.9;transition:transform .3s,opacity .3s}
 .client-cell:hover .logo-img{transform:translateY(-3px);opacity:1}
 .logo-img--icon{height:38px;width:38px}
+.logo-img--ms{height:30px}
 .logo-mono{
   width:38px;height:38px;display:flex;align-items:center;justify-content:center;
   font-family:var(--ff-display);font-weight:800;font-size:18px;background:transparent;color:var(--red);
@@ -451,7 +453,7 @@ h1,h2,h3,h4{font-family:var(--ff-display);font-weight:700;line-height:.98;letter
   .client-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .client-cell{aspect-ratio:auto;min-height:124px;padding:18px 12px}
   .client-cell .cname{font-size:10.5px}
-  .logo-slot{height:30px;margin-bottom:8px}
+  .logo-slot{height:30px}
   .logo-img{height:24px;max-width:88px}
   .logo-img--icon{height:32px;width:32px}
 }
